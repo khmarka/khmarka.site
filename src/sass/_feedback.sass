@@ -1,0 +1,25 @@
+
+.feedback
+	
+	margin-top: 50px
+	.button
+		width: 100%
+		display: block
+		&:hover
+			background-color: lighten($dark-blue,5%)
+		&:active
+			background-color: darken($dark-blue,5%)
+	input, textarea
+		+placeholder
+			color: $gray-text-color
+		&:focus
+			+box-shadow(inset 0 0 1px rgba($dark-blue, 0.5), inset 0 0 1px rgba($dark-blue, 0.5))
+		border: none
+		color: $light-text-color
+		margin-bottom: 16px
+		box-sizing: border-box
+		width: 100%
+		padding: 12px 14px
+		background-color: white
+		+border-radius(3px)
+		+box-shadow(inset 0 0 1px rgba(0, 0, 0, 0.5))
