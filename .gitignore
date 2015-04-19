@@ -1,5 +1,5 @@
 #www
+src
 node_modules
 .sass-cache
-src/bower
 vendor
