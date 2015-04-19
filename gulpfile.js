@@ -21,12 +21,11 @@ var gulp         = require('gulp'),
 gulp.task('browser-sync', function() {
     browserSync({
         server: {
-            baseDir: './'
-            // index: 'index.html'
+            baseDir: './www'
         },
-        files: ["www/css/*.css", "www/*.html", "www/js/**/*.js"],
+        files: ["www/css/*.css", "www/*.html", "www/js/**/*.js", "vendor/**/*",'www/*.php'],
         port: 8080,
-        open: false,
+        open: true,
         notify: false,
         ghostMode: false
     });
@@ -123,11 +122,12 @@ gulp.task('watch', function() {
     gulp.watch('src/js/**/*.js', ['copy-script']);
     gulp.watch('src/static/**/*.js', ['copy-static']);
     gulp.watch('src/img/**/*', ['copy-images']);
+    gulp.watch('src/php/**/*', ['copy-php']);
     // gulp.watch('img/svg/icons/*.svg', ['svgSprite', 'pngSprite']);
 });
 
 gulp.task('build',function (cb) {
-    var sequence = ['clean',['copy','copy-script', 'copy-static','copy-images', 'jade', 'compass']];
+    var sequence = ['clean',['copy','copy-script', 'copy-static', 'copy-php','copy-images', 'jade', 'compass']];
     if (argv.production) sequence.push('minify');
     sequence.push(cb);
     return runSequence.apply(this, sequence);
@@ -142,6 +142,10 @@ gulp.task('copy-script', function () {
 });
 gulp.task('copy-images', function () {
     return gulp.src('src/img/**/*', {base: './src'})
+        .pipe(gulp.dest('./www'));
+});
+gulp.task('copy-php', function () {
+    return gulp.src('src/php/**/*', {base: './src/php'})
         .pipe(gulp.dest('./www'));
 });
 gulp.task('copy', function () {
