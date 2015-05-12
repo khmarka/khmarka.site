@@ -1,0 +1,84 @@
+
+<div class="out">
+  <header class="header">
+    <div class="header__in">
+      <nav class="nav nav_main">
+        <div class="nav__logo"><img src="./img/logo.svg"/></div>
+        <div class="nav__menu is-active">
+          <ul>
+            <li><a scroll-to="#section-about-us" translate="about-us" class="is-active"></a></li>
+            <li><a scroll-to="#section-features" translate="features"></a></li>
+            <li><a scroll-to="#section-portfolio" translate="projects"></a></li>
+            <li>
+              <button scroll-to="#section-contacts" translate="contact-us"></button>
+            </li>
+          </ul>
+        </div>
+        <div class="nav__toggle"><i class="icon icon-menu"></i></div>
+      </nav>
+      <div class="header__content">
+        <h1 translate="company-mission"></h1>
+      </div>
+      <projects id="projects-header" projects-src="projects"></projects>
+    </div>
+  </header>
+  <div class="wrap">
+    <div class="wrap__in">
+      <section id="section-about-us" class="section section_center section_about-us">
+        <h2 translate="about-us"></h2>
+        <p translate="about-us-description"></p>
+        <hr class="divider"/>
+      </section>
+      <section id="section-features" class="section section_features section_left">
+        <div class="section__content">
+          <h2 translate="features"></h2>
+          <div class="section__img"><img src="./img/feature-icon.png" alt=""/></div>
+          <div ng-bind-html="'features-description' | translate | html"></div>
+        </div>
+      </section>
+      <section id="section-portfolio" class="section section_portfolio">
+        <hr class="divider"/>
+        <h2 translate="our-projects"></h2>
+        <projects id="projects-portfolio" projects-src="projects"></projects>
+        <portfolio portfolio-src="projects"></portfolio>
+      </section>
+      <section id="section-contacts" class="section section_contacts">
+        <h2 translate="contacts"></h2>
+        <div class="contacts">
+          <p><i class="icon icon-home"></i>{{'contact-address' | translate}}</p>
+          <p><i class="icon icon-phone"></i>{{'contact-phonenumber' | translate }}</p>
+          <p><i class="icon icon-mail"></i>{{'parthnership' | translate}}:&nbsp;<a href="mailto:join@khmarka.com.ua">join@kmarka.com.ua</a><br/>{{'vacancies' | translate}}:&nbsp;<a href="mailto:jobs@khmarka.com.ua">jobs@kmarka.com.ua</a></p>
+        </div>
+        <div class="feedback">
+          <form id="feedbackForm" action="mail.php" method="POST" class="form">
+            <label>
+              <input type="text" required="required" name="name" placeholder="{{'name' | translate}}" class="input"/>
+            </label>
+            <label>
+              <input type="email" required="required" name="email" placeholder="{{'email' | translate}}" class="input"/>
+            </label>
+            <label>
+              <input type="text" required="required" name="company_name" placeholder="{{'companyName' | translate}}" class="input"/>
+            </label>
+            <label>
+              <textarea name="text" required="required" cols="30" rows="10" placeholder="{{'message' | translate}}" class="textarea"></textarea>
+            </label>
+            <button type="submit" translate="send" class="button button_blue"></button>
+          </form>
+        </div>
+      </section>
+      <section class="section section_footer">
+        <div class="footer">
+          <div class="footer__copyright">
+            <div class="copyright">© Khmarka LLC</div>
+          </div>
+          <div class="footer__language">
+            <label class="language">
+              <select ng-options="obj as obj.name for obj in languages" ng-model="selectedLanguage"></select>
+            </label>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
