@@ -1,231 +1,45 @@
 doctype
-html
+html(ng-app="app")
     head
         meta(charset="utf-8")
-        title Khmarka
+        title(translate="title")
         meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no")
+        link(rel='shortcut icon', href='./img/favicons/favicon.ico', type='image/x-icon')
+        link(rel='apple-touch-icon', href='./img/favicons/apple-touch-icon.png')
+        link(rel='apple-touch-icon', sizes='57x57', href='./img/favicons/apple-touch-icon-57x57.png')
+        link(rel='apple-touch-icon', sizes='72x72', href='./img/favicons/apple-touch-icon-72x72.png')
+        link(rel='apple-touch-icon', sizes='76x76', href='./img/favicons/apple-touch-icon-76x76.png')
+        link(rel='apple-touch-icon', sizes='114x114', href='./img/favicons/apple-touch-icon-114x114.png')
+        link(rel='apple-touch-icon', sizes='120x120', href='./img/favicons/apple-touch-icon-120x120.png')
+        link(rel='apple-touch-icon', sizes='144x144', href='./img/favicons/apple-touch-icon-144x144.png')
+        link(rel='apple-touch-icon', sizes='152x152', href='./img/favicons/apple-touch-icon-152x152.png')
 
         meta(name="format-detection" content="telephone=no")
         link(rel="stylesheet" media="all" href="css/screen.css")
-    body
+    body(ng-controller="AppController")
+        .remodal-bg
+            .remodal(data-remodal-id='modal')
+                h1.title Установка приложение
+                p
+                    | Для того, чтобы установить приложение, оставьте свой email. Мы отправим ссылку вам на почту.
+                form.form#installForm(action="main-install.php", method="post")
+                    input.input(type="email", required, placeholder="Email")
+                    br
+                    .buttons.buttons_2
+                        a.button.button_clear.remodal-cancel(href='#') Cancel
+                        a.button.button_blue.remodal-confirm(href='#', id="installApp_submit") OK
 
-        .out
-            header.header
-                .header__in
-                    nav.nav.nav_main
-                        .nav__logo
-                            img(src="./img/logo.svg")
-                        .nav__menu.is-active
-                            ul
-                                li
-                                    a.is-active(scroll-to="#section-about-us") О нас       
-                                li 
-                                    a(scroll-to="#section-features") Возможности
-                                li 
-                                    a(scroll-to="#section-portfolio") Проекты
-                                li  
-                                    button(scroll-to="#section-contacts") Связаться с нами
-                        .nav__toggle
-                            i.icon.icon-menu
-                    .header__content
-                        h1 Ваше мобильное приложение без стартовых затрат
-                        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
-                    .projects.projects_center#projects-header
-                        ul.projects__in
-                            li.projects__item
-                                img.icon(src="./img/apps/business-bank.png", alt="")
-                                span Business Bank
-                            li.projects__item
-                                img.icon(src="./img/apps/personal-bank.png", alt="")
-                                span Personal Bank
-                            li.projects__item
-                                img.icon(src="./img/apps/food-retail.png", alt="")
-                                span Food Retail
-                            li.projects__item
-                                img.icon(src="http://placehold.it/100x100", alt="")
-                                span Gaz stations
-            .wrap
-                .wrap__in
-                    section.section.section_center.section_about-us#section-about-us
-                        h2 О нас
-                        p Мы - украинская компания разработчик мобильных приложений. В нашей команде работают специалисты с более, чем 10-летним опытом дизайна, разработки и внедрения приложений.
-                        hr.divider
-
-                    section.section.section_features.section_left#section-features
-                        .section__content
-                            h2 Возможности
-                            .section__img
-                                img(src="./img/feature-icon.png", alt="")
-                            p Мы предлагаем Вам мобильное приложение без затрат на его разработку, лицензии программного обеспечений, оборудование и дальнейшее администрирование.  
-                            p Наш Заказчик оплачивает только подписку на облако  KHMARKA. Единственные его затраты на внедрение и развитие мобильного приложения – ежемесячная абонплата!
-                    section.section.section_portfolio#section-portfolio
-                        hr.divider
-                        h2 Наши проекты
-                        .projects.projects_dark.projects_center#projects-portfolio
-                            ul.projects__in
-                                li.projects__item.is-active
-                                    img.icon(src="img/apps/business-bank.png", alt="")
-                                    span Business Bank
-                                li.projects__item
-                                    img.icon(src="img/apps/personal-bank.png", alt="")
-                                    span Personal Bank
-                                li.projects__item
-                                    img.icon(src="img/apps/food-retail.png", alt="")
-                                    span Food Retail
-                                li.projects__item
-                                    img.icon(src="http://placehold.it/100x100", alt="")
-                                    span Gaz stations
-                        .portfolio
-                            .portfolio__item.is-active
-                                .portfolio__preview
-                                    .phone
-                                        .phone__inner
-                                            img
-                                .portfolio__item__sidebar
-                                        .portfolio__icon
-                                            img.icon(src="img/apps/business-bank.png", alt="")
-                                .portfolio__item__content
-                                    h3 Мобильное приложение для Юридических лиц, клиентов СМБ
-                                    p Наше приложение реализует личный кабинет покупателя-клиента торговой сети. Благодаря нашему приложению, бонусная карточка всегда находится с покупателем – в его смартфоне.
-                                    p С помощью нашего приложения, покупатель сможет: 
-                                    ul
-                                        li При покупке начислять баллы без помощи скидочной карты;
-                                        li Контролировать баланс бонусного счета и просматривать историю покупок; 
-                                        li Формировать список покупок и обмениваться им между членами своей семьи;
-                                        li Найти ближайший магазин и проложить к нему маршрут.
-                                    p А с помощью бесплатных PUSH-уведомлений Ваш клиент всегда будет в курсе Ваших последних акций и предложений!
-                                    .portfolio__item__actions
-                                        a(href-ios="itms-services://?action=download-manifest&url=https://s1.khmarka.com.ua:9443/applicationcenter/service/link/plist/ffffffb83c10ffffffd9ffffff9bfffffffaffffff95ffffffae4cffffffb7ffffffca5b75055442" href-android="https://s1.khmarka.com.ua:9443/applicationcenter/service/apk/application/storage/69") 
-                                            i.icon.icon-phone
-                                            |Установить&nbsp;приложение
-                                        a(scroll-to="#section-contacts")
-                                            i.icon.icon-telephone
-                                            |Связаться&nbsp;с&nbsp;нами
-
-                            .portfolio__item
-                                .portfolio__item__sidebar
-                                    .portfolio__icon
-                                        img.icon(src="img/apps/personal-bank.png", alt="")
-                                .portfolio__preview
-                                    .phone
-                                        .phone__inner
-                                            img
-                                .portfolio__item__content
-                                    h3 Мобильное приложение для Физических лиц
-                                    p Наше мобильное приложение позволяет выполнять весь спектр банковских операций без необходимости посещать отделение банка.
-                                    p Наше приложение умеет:
-                                    ul
-                                        li Работать с текущими счетами и банковскими картами; 
-                                        li Оплачивать коммунальные платежи и пополнять счета на мобильные телефоны
-                                        li Погашать кредиты; 
-                                        li Размещать депозиты; 
-                                        li Определять свое местоположение, искать отделения и банкоматы на карте и прокладывать к ним маршруты.
-                                    p Благодаря бесплатным PUSH-уведомлениям Ваш клиент всегда в курсе последних предложений Банка! 
-                                    p Наше приложение работает на всех типах смартфонов и планшетах.
-                                    .portfolio__item__actions
-                                        a(href-ios="itms-services://?action=download-manifest&url=https://s1.khmarka.com.ua:9443/applicationcenter/service/link/plist/1affffffae66ffffff91fffffff5ffffffb90278ffffffa3ffffffd0ffffff8affffff8bffffff844f19ffffffa4" href-android="https://s1.khmarka.com.ua:9443/applicationcenter/service/apk/application/storage/28")
-                                            i.icon.icon-phone
-                                            |Установить приложение
-                                        a(scroll-to="#section-contacts") 
-                                            i.icon.icon-telephone
-                                            |Связаться с нами
-                            .portfolio__item
-                                .portfolio__item__sidebar
-                                    .portfolio__icon
-                                        img.icon(src="img/apps/food-retail.png", alt="")
-                                .portfolio__preview
-                                    .phone
-                                        .phone__inner
-                                            img(src="img/apps/screens/food-retail.png", alt="")
-                                                
-                                .portfolio__item__content
-                                    h3 Мобильное приложение для торговых сетей
-                                    p Наше приложение реализует личный кабинет покупателя-клиента торговой сети. Благодаря нашему приложению, бонусная карточка всегда находится с покупателем – в его смартфоне.
-                                    p С помощью нашего приложения, покупатель сможет: 
-                                    ul
-                                        li При покупке начислять баллы без помощи скидочной карты;
-                                        li Контролировать баланс бонусного счета и просматривать историю покупок; 
-                                        li Формировать список покупок и обмениваться им между членами своей семьи;
-                                        li Найти ближайший магазин и проложить к нему маршрут.
-                                    p А с помощью бесплатных PUSH-уведомлений Ваш клиент всегда будет в курсе Ваших последних акций и предложений! 
-                                    p Наше приложение работает на всех типах смартфонов и планшетах.
-                                    .portfolio__item__actions
-                                        a(href-ios="itms-services://?action=download-manifest&url=https://s1.khmarka.com.ua:9443/applicationcenter/service/link/plist/34ffffffdc48fffffff014ffffffda2effffffccffffffb51d4a1fffffffddffffffd8ffffffd7ffffffa2")
-                                            i.icon.icon-phone
-                                            |Установить приложение
-                                        a(scroll-to="#section-contacts") 
-                                            i.icon.icon-telephone
-                                            |Связаться с нами
-                            .portfolio__item
-                                .portfolio__item__sidebar
-                                    .portfolio__icon
-                                        img
-                                .portfolio__preview
-                                    .phone
-                                        .phone__inner
-                                            img
-                                .portfolio__item__content
-                                    h3 Мобильное приложение для сетей АЗС
-                                    p Наше приложение реализует личный кабинет участника Вашей бонусной программы. Благодаря нашему приложению, бонусная карточка Вашей сети всегда находится с водителем – в его смартфоне.
-                                    p Наше приложение позволит Вашим клиентам: 
-                                    ul 
-                                        li При расчете за заправку начислять баллы без помощи скидочной карты;
-                                        li Контролировать баланс бонусного счета и просматривать историю заправок и покупок; 
-                                        li Быть всегда в курсе стоимости бензин и дизильного топлива 
-                                        li Найти ближайшую АЗС и проложить к ней маршрут.
-                                    p А с помощью бесплатных PUSH-уведомлений Ваш клиент всегда будет в курсе Ваших последних акций и предложений! 
-                                    p Наше приложение работает на всех типах смартфонов и планшетах.
-                                    .portfolio__item__actions
-                                        a(href-ios="itms-services://?action=download-manifest&url=https://s1.khmarka.com.ua:9443/applicationcenter/service/link/plist/ffffffd40bffffff941cffffffe319ffffffc9fffffff2521dffffff8d13ffffff9fffffffa54353")
-                                            i.icon.icon-phone
-                                            |Установить приложение
-                                        a(scroll-to="#section-contacts")    
-                                            i.icon.icon-telephone
-                                            |Связаться с нами
-
-                    section.section.section_contacts(id="section-contacts")
-                        h2 Контакты
-                        .contacts
-                            p
-                                i.icon.icon-home
-                                | Украина, г. Киев, ул. Хорива 9а, оф. 22
-                            p
-                                i.icon.icon-phone
-                                | +380 (50) 123-4214
-                            p
-                                i.icon.icon-mail
-                                |Партнерство: 
-                                a(href="mailto: join@khmarka.com.ua") join@kmarka.com.ua
-                                br
-                                |Вакансии: 
-                                a(href="mailto: jobs@khmarka.com.ua") jobs@kmarka.com.ua
-
-                        .feedback
-                            form.form(id="feedbackForm", action="mail.php", method="POST")
-                                label
-                                    input(type="text", required, name="name", placeholder="Имя")
-                                label
-                                    input(type="email", required, name="email", placeholder="Email")
-                                label
-                                    input(type="text", required, name="company_name", placeholder="Название компании")
-                                label
-                                    textarea(name="text", required, cols="30", rows="10", placeholder="Сообщение")
-                                button.button.button_blue(type="submit") Отправить
-                    section.section.section_footer
-                        //- .nav.nav_hor.nav_footer
-                        //-     ul
-                        //-         li 
-                        //-             a О нас
-                        //-         li  
-                        //-             a Возможности
-                        //-         li 
-                        //-             a Контакты
-                        //-         li  
-                        //-             a Facebook
-                        .copyright © Khmarka LLC
-
+        div(ui-view)
         script(src="bower/jquery/dist/jquery.min.js")
         script(src="bower/fastclick/lib/fastclick.js")   
         script(src="bower/iscroll/build/iscroll.js")   
         script(src="bower/jquery-validation/dist/jquery.validate.min.js")
+        script(src="bower/remodal/dist/jquery.remodal.js")
         script(src="js/main.js")
+        script(src='bower/angular/angular.js')
+        script(src='bower/angular-ui-router/release/angular-ui-router.js')
+        script(src='bower/angular-translate/angular-translate.js')
+        script(src='bower/angular-translate-loader-static-files/angular-translate-loader-static-files.js')
+        script(src='bower/angular-translate-loader-url/angular-translate-loader-url.js')
+
+        script(src="js/app.js")

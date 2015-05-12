@@ -23,7 +23,7 @@ gulp.task('browser-sync', function() {
         server: {
             baseDir: './www'
         },
-        files: ["www/css/*.css", "www/*.html", "www/js/**/*.js", "vendor/**/*",'www/*.php'],
+        files: ["www/{css, js}/*.css", "www/*.html", "vendor/**/*",'www/*.php'],
         port: 8080,
         open: true,
         notify: false,
@@ -123,11 +123,12 @@ gulp.task('watch', function() {
     gulp.watch('src/static/**/*.js', ['copy-static']);
     gulp.watch('src/img/**/*', ['copy-images']);
     gulp.watch('src/php/**/*', ['copy-php']);
+    gulp.watch('src/lang/**/*', ['copy-lang']);
     // gulp.watch('img/svg/icons/*.svg', ['svgSprite', 'pngSprite']);
 });
 
 gulp.task('build',function (cb) {
-    var sequence = ['clean',['copy','copy-script', 'copy-static', 'copy-php','copy-images', 'jade', 'compass']];
+    var sequence = ['clean',['copy','copy-script', 'copy-static', 'copy-lang', 'copy-php','copy-images', 'jade', 'compass']];
     if (argv.production) sequence.push('minify');
     sequence.push(cb);
     return runSequence.apply(this, sequence);
@@ -148,6 +149,11 @@ gulp.task('copy-php', function () {
     return gulp.src('src/php/**/*', {base: './src/php'})
         .pipe(gulp.dest('./www'));
 });
+gulp.task('copy-lang', function () {
+    return gulp.src('src/lang/**/*', {base: './src'})
+        .pipe(gulp.dest('./www'));
+});
+
 gulp.task('copy', function () {
     return gulp.src('src/{bower,fonts}/**/*', {base: './src'})
         .pipe(gulp.dest('./www'));
