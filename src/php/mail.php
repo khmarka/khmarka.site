@@ -1,8 +1,7 @@
 <?php
 
 try {
-    include(__DIR__ . '/../vendor/mandrill/mandrill/src/Mandrill.php');
-    $mandrill = new Mandrill('FPsSJwpF5OF4Ns0CWkS5ng');
+    include(__DIR__.'/./_mail.php');
     $to_email = 'ab@khmarka.com.ua';
     $from_email = getPost('email', 'noreply@khmarka.com.ua');
 
@@ -35,20 +34,4 @@ try {
     }
 } catch (Mandrill_Error $e) {
     sendJson(false, 'A mandrill error occurred: ' . get_class($e) . ' - ' . $e->getMessage(), 500);
-}
-
-function getPost($key, $default = '')
-{
-    return isset($_POST[$key]) ? $_POST[$key] : $default;
-}
-
-function sendJson($status, $message, $code = 200)
-{
-    header('Content-Type: application/json');
-    http_response_code($code);
-    echo json_encode([
-        'success' => boolval($status),
-        'message' => $message,
-    ]);
-    exit;
 }
