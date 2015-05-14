@@ -50,20 +50,20 @@
           <p><i class="icon icon-mail"></i>{{'parthnership' | translate}}:&nbsp;<a href="mailto:join@khmarka.com.ua">join@kmarka.com.ua</a><br/>{{'vacancies' | translate}}:&nbsp;<a href="mailto:jobs@khmarka.com.ua">jobs@kmarka.com.ua</a></p>
         </div>
         <div class="feedback">
-          <form id="feedbackForm" action="mail.php" method="POST" class="form">
+          <form id="feedbackForm" ng-submit="submitFeedback(form)" name="form" class="form">
             <label>
-              <input type="text" required="required" name="name" placeholder="{{'name' | translate}}" class="input"/>
+              <input type="text" required="required" name="name" placeholder="{{'name' | translate}}" ng-model="feedback.name" class="input"/>
             </label>
             <label>
-              <input type="email" required="required" name="email" placeholder="{{'email' | translate}}" class="input"/>
+              <input type="email" required="required" name="email" placeholder="{{'email' | translate}}" ng-model="feedback.email" class="input"/>
             </label>
             <label>
-              <input type="text" required="required" name="company_name" placeholder="{{'companyName' | translate}}" class="input"/>
+              <input type="text" required="required" name="company_name" placeholder="{{'companyName' | translate}}" ng-model="feedback.companyName" class="input"/>
             </label>
             <label>
-              <textarea name="text" required="required" cols="30" rows="10" placeholder="{{'message' | translate}}" class="textarea"></textarea>
+              <textarea name="text" required="required" cols="30" rows="10" placeholder="{{'message' | translate}}" ng-model="feedback.message" class="textarea"></textarea>
             </label>
-            <button type="submit" translate="send" class="button button_blue"></button>
+            <button type="submit" class="button button_blue">{{feedbackButton | translate}}</button>
           </form>
         </div>
       </section>
