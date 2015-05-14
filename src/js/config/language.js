@@ -6,6 +6,7 @@ app.config(function ($translateProvider) {
         suffix: '.json'
     });
     $translateProvider.useSanitizeValueStrategy('escaped');
+    $translateProvider.useCookieStorage();
     $translateProvider.preferredLanguage('ua');
 });
 app.constant('LANGUAGES', [

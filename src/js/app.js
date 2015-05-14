@@ -4,7 +4,10 @@ var app = angular.module('app', [
     // routing
     'ui.router',
     // multilanguage
-    'pascalprecht.translate']);
+    'pascalprecht.translate',
+    // storage
+    'ngCookies'
+]);
 
 
 //app.directive('href', function () {
