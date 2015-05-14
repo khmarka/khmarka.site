@@ -57,16 +57,16 @@
                         a(href="mailto:jobs@khmarka.com.ua") jobs@kmarka.com.ua
 
                 .feedback
-                    form.form(id="feedbackForm", action="mail.php", method="POST")
+                    form.form(id="feedbackForm", ng-submit="submitFeedback(form)", name="form")
                         label
-                            input.input(type="text", required, name="name", placeholder="{{'name' | translate}}")
+                            input.input(type="text", required, name="name", placeholder="{{'name' | translate}}", ng-model="feedback.name")
                         label
-                            input.input(type="email", required, name="email", placeholder="{{'email' | translate}}")
+                            input.input(type="email", required, name="email", placeholder="{{'email' | translate}}", ng-model="feedback.email")
                         label
-                            input.input(type="text", required, name="company_name", placeholder="{{'companyName' | translate}}")
+                            input.input(type="text", required, name="company_name", placeholder="{{'companyName' | translate}}", ng-model="feedback.companyName")
                         label
-                            textarea.textarea(name="text", required, cols="30", rows="10", placeholder="{{'message' | translate}}")
-                        button.button.button_blue(type="submit", translate="send")
+                            textarea.textarea(name="text", required, cols="30", rows="10", placeholder="{{'message' | translate}}", ng-model="feedback.message")
+                        button.button.button_blue(type="submit") {{feedbackButton | translate}}
             section.section.section_footer
                 .footer
                     .footer__copyright

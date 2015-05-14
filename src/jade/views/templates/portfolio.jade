@@ -1,5 +1,5 @@
 .portfolio
-    .portfolio__item(ng-repeat="project in projects")
+    .portfolio__item(ng-repeat="project in projects", ng-class="{'is-active': project.isActive == true}")
         .portfolio__preview
             .phone
                 .phone__inner
