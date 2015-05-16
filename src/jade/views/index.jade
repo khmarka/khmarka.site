@@ -38,7 +38,7 @@
                 hr.divider
                 h2(translate="our-projects")
                 projects#projects-portfolio(projects-src="projects")
-                portfolio(portfolio-src="projects")
+                portfolio(portfolio-src="projects", on-install-click="openEmailDialog()")
             section.section.section_contacts(id="section-contacts")
                 h2(translate="contacts")
                 .contacts

@@ -11,7 +11,7 @@
             h3 {{project.title}}
             div(ng-bind-html="project.description | html")
             .portfolio__item__actions
-                a(href-ios="{{project.links.ios}}", href-android="{{project.links.android}}")
+                a(ng-click="onInstallClick()")
                     i.icon.icon-phone
                     span(translate="install-app")
                 a(scroll-to="#section-contacts")
