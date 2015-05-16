@@ -4,7 +4,8 @@ app.directive('portfolio', function () {
     return {
         restrict: 'E',
         scope: {
-            projects: '=portfolioSrc'
+            projects: '=portfolioSrc',
+            onInstallClick: '&onInstallClick'
         },
         replace: true,
         templateUrl: 'views/templates/portfolio.html'

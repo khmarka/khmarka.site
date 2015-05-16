@@ -25,4 +25,23 @@ app.service('Feedback', function (Support, $log) {
 
         return Support.$$request('tickets', 'post', newTicket);
     };
+    this.links = function (name, email) {
+        email = email || '';
+
+        var newTicket = {
+            ticket: {
+                subject: 'Ссылки на скачивания отправлены на ' + email,
+                comment: {
+                    value: 'Запрос ссылки на скачивание'
+                },
+                requester: {
+                    email: email,
+                    name: name
+                },
+                tags: ['install_app']
+            }
+        };
+        $log.debug('get links', newTicket);
+        return Support.$$request('tickets', 'post', newTicket);
+    };
 });

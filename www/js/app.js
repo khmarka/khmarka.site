@@ -6,7 +6,9 @@ var app = angular.module('app', [
     // multilanguage
     'pascalprecht.translate',
     // storage
-    'ngCookies'
+    'ngCookies',
+    // modal
+    'ngDialog'
 ]);
 
 

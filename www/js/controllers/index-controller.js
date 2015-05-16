@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('IndexController', function ($scope, $rootScope, $log, $translate, $filter,LANGUAGES, Feedback, $timeout) {
+app.controller('IndexController', function ($scope, $rootScope, $log, $translate, $filter,LANGUAGES, Feedback, $timeout, ngDialog) {
     $log.debug('Index page controller');
 
 
@@ -18,6 +18,47 @@ app.controller('IndexController', function ($scope, $rootScope, $log, $translate
         $rootScope.selectedLanguage = getLang(val.language);
         // TODO: save to storage choice
     });
+
+    $scope.installModalForm = {
+        name: null,
+        email: null,
+        submit: 'Отправить'
+    };
+    $scope.installModal = null;
+
+    $scope.submitInstallForm = function (form) {
+        if (form.$invalid) {
+            $log.debug('invalid install app form');
+            return;
+        }
+        $scope.installModalForm.submit = "Отправка ...";
+
+        Feedback.links($scope.installModalForm.name, $scope.installModalForm.email).then(function () {
+            $scope.installModalForm.submit = 'Отправлено успешно!';
+            $timeout(function () {
+                $scope.installModal.close();
+            }, 1000);
+        }, function () {
+            $scope.installModalForm.submit = "Ошибка отправки. Попробуйте снова!";
+        }).finally(function () {
+            $timeout(function () {
+                $scope.installModalForm.submit = 'Отправить';
+            }, 2000);
+            $scope.installModalForm.email = null;
+        })
+    };
+    $scope.openEmailDialog = function () {
+        $log.debug("openEmailDialog clicked");
+        $scope.installModal = ngDialog.open({
+            template: 'views/popups/email.html',
+            scope: $scope,
+            showClose: true
+        });
+        $scope.installModal.closePromise.then(function () {
+            $log.debug("openEmailDialog resolved");
+        });
+        return $scope.installModal;
+    };
 
     $scope.feedback = {
         name: '',

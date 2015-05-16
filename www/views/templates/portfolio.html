@@ -12,7 +12,7 @@
     <div class="portfolio__item__content">
       <h3>{{project.title}}</h3>
       <div ng-bind-html="project.description | html"></div>
-      <div class="portfolio__item__actions"><a href-ios="{{project.links.ios}}" href-android="{{project.links.android}}"><i class="icon icon-phone"></i><span translate="install-app"></span></a><a scroll-to="#section-contacts"><i class="icon icon-telephone"></i><span translate="contact-us"></span></a></div>
+      <div class="portfolio__item__actions"><a ng-click="onInstallClick()"><i class="icon icon-phone"></i><span translate="install-app"></span></a><a scroll-to="#section-contacts"><i class="icon icon-telephone"></i><span translate="contact-us"></span></a></div>
     </div>
   </div>
 </div>
