@@ -1,0 +1,8 @@
+h1  Enter email adress
+form.form(ng-submit="submitInstallForm(form)", name="form")
+    label
+        input.input(name="name",type="text", required, ng-model="installModalForm.name", placeholder="Ваше имя")
+    label
+        input.input(name="email",type="email", required, ng-model="installModalForm.email", placeholder="Введите email")
+    div.buttons
+        button.button.button_blue(type="submit") {{installModalForm.submit}}
