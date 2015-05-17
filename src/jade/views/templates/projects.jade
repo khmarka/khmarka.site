@@ -1,0 +1,5 @@
+.projects.projects_center
+    ul.projects__in
+        li.projects__item(ng-repeat="project in projects", ng-class="{'is-active': project.isActive == true}")
+            img.icon(ng-src="{{project.iconUrl}}", alt="")
+            span(translate="{{project.name}}")

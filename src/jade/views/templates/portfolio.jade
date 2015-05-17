@@ -1,0 +1,19 @@
+.portfolio
+    .portfolio__item(ng-repeat="project in projects", ng-class="{'is-active': project.isActive == true}")
+        .portfolio__preview
+            .phone
+                .phone__inner
+                    img(ng-src="{{project.screenUrl}}", alt="")
+        .portfolio__item__sidebar
+            .portfolio__icon
+                img.icon(ng-src="{{project.iconUrl}}", alt="")
+        .portfolio__item__content
+            h3 {{project.title}}
+            div(ng-bind-html="project.description | html")
+            .portfolio__item__actions
+                a(ng-click="onInstallClick()")
+                    i.icon.icon-phone
+                    span(translate="install-app")
+                a(scroll-to="#section-contacts")
+                    i.icon.icon-telephone
+                    span(translate="contact-us")
