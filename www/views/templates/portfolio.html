@@ -1,0 +1,18 @@
+
+<div class="portfolio">
+  <div ng-repeat="project in projects" ng-class="{'is-active': project.isActive == true}" class="portfolio__item">
+    <div class="portfolio__preview">
+      <div class="phone">
+        <div class="phone__inner"><img ng-src="{{project.screenUrl}}" alt=""/></div>
+      </div>
+    </div>
+    <div class="portfolio__item__sidebar">
+      <div class="portfolio__icon"><img ng-src="{{project.iconUrl}}" alt="" class="icon"/></div>
+    </div>
+    <div class="portfolio__item__content">
+      <h3>{{project.title}}</h3>
+      <div ng-bind-html="project.description | html"></div>
+      <div class="portfolio__item__actions"><a ng-click="onInstallClick()"><i class="icon icon-phone"></i><span translate="install-app"></span></a><a scroll-to="#section-contacts"><i class="icon icon-telephone"></i><span translate="contact-us"></span></a></div>
+    </div>
+  </div>
+</div>
