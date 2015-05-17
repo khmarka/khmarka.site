@@ -1,7 +1,6 @@
 www
 node_modules
 .sass-cache
-#src
 src/bower
 .idea
 npm-debug.log
