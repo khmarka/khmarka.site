@@ -1,7 +1,7 @@
 "use strict";
 
 app.constant('SUPPORT', {
-    url: 'https://khmarkasupport.zendesk.com/api/v2/',
+    url: 'http://khmarkasupport.zendesk.com/api/v2/',
     login: 'mobile@khmarka.com.ua/token',
     token: 'qsNbqurOrukui1BlFmwnaUB4HRaLyUAtb1Ckagqt'
 });
@@ -24,9 +24,10 @@ app.service('Support', function ($http, $log, $q, Base64, SUPPORT) {
                 'Authorization': 'Basic ' + credentials,
                 'Content-Type': 'application/json'
             },
+            cors: true,
             withCredentials: true
         };
-        if (data) req.data = data;
+        if (data) req.data = JSON.stringify(data);
 
         $log.debug('support request', req);
         return $http(req);
