@@ -1,8 +1,8 @@
 /* TEAM */
-Your title: Best Wallet
-Site: support@wallet.best
+Your title: Khmarka LLC
+Site: support@khmarka.com.ua
 Location: Kiev, Ukraine
 
 /* SITE */
 Standards: HTML5, CSS3
-Components: jQuery, AngularJS, Head.js
+Components: AngularJS, Node JS
