@@ -17,10 +17,8 @@ var port = process.env.PORT || 8080;        // set our port
 // routes
 var router = express.Router();
 
-// test route to make sure everything is working (accessed at GET http://localhost:8080/api)
-router.get('/', function(req, res) {
-    res.json({ message: 'Khmarka! Welcome to our api!' });
-});
+// website static files. SPA
+app.use(express.static(__dirname + '/../www'));
 
 // Если произошла ошибка валидации, то отдаем 400 Bad Request
 app.use(function (err, req, res, next) {
@@ -33,6 +31,15 @@ app.use(function (err, req, res, next) {
     res.status(500).send(err);
 });
 
+// CORS
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
+
 router.post('/links', function (req, res) {
     var email = req.body.email,
         name = req.body.name;
@@ -42,6 +49,15 @@ router.post('/links', function (req, res) {
 
     links.sendAll(email, name, function (err, results) {
         if (err) return res.status(500).send(results);
+        return res.json({ text: "Links was sent successfully" });
+    });
+});
+router.post('/links/:appName', function (req, res) {
+    console.log('send link for app (', req.params.appName, ') to', req.body.email, req.body.name);
+    links.send(req.params.appName, req.body.email, req.body.name, function (err, results) {
+        if (err) return res.status(400).json({
+            error: err.message
+        });
         return res.json({ text: "Links was sent successfully" });
     });
 });
@@ -58,13 +74,10 @@ router.post('/feedback', function (req, res) {
     })
 });
 
-// more routes for our API will happen here
-
 // REGISTER OUR ROUTES -------------------------------
-// all of our routes will be prefixed with /api
 app.use('/api', router);
 
 // START THE SERVER
 // =============================================================================
 app.listen(port);
-console.log('Magic happens on port ' + port);
+console.log('Server started on port ' + port);

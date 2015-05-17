@@ -7,4 +7,24 @@ var client = zendesk.createClient({
     remoteUri: 'https://khmarkasupport.zendesk.com/api/v2/'
 });
 
-module.exports = client;
+function createTicket (subject, value, name, email, tags, cb) {
+    tags = tags || [];
+    client.tickets.create({
+        ticket: {
+            subject: subject,
+            comment: {
+                value: value
+            },
+            requester: {
+                name: name,
+                email: email
+            },
+            tags: tags
+        }
+    }, function (err, request, result) {
+        cb (null, result);
+    });
+}
+
+module.exports.client = client;
+module.exports.createTicket = createTicket;

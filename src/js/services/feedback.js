@@ -1,6 +1,16 @@
 'use strict';
 
-app.service('Feedback', function (Support, $log) {
+app.service('Feedback', function ($http, $log) {
+
+    var baseUrl = 'http://localhost:8080/api/';
+    function request (url, method, data) {
+        return $http({
+            method: method,
+            url: baseUrl + url,
+            data: angular.toJson(data || {})
+        });
+    }
+
     this.create = function (name, email, companyName, message) {
 
         name = name || '';
@@ -8,40 +18,23 @@ app.service('Feedback', function (Support, $log) {
         companyName = companyName || '';
         message = message || '';
 
-        var newTicket = {
-            ticket: {
-                subject: 'Заявка от компании '+companyName,
-                comment: {
-                    value: message
-                },
-                requester: {
-                    name: name,
-                    email: email
-                },
-                tags: ['website', 'feedback']
-            }
-        };
-        $log.debug('create feedback', newTicket);
-
-        return Support.$$request('tickets', 'post', newTicket);
+        return request ('feedback', 'post', {
+            name: name,
+            email: email,
+            companyName: companyName,
+            message: message
+        });
     };
-    this.links = function (name, email) {
-        email = email || '';
 
-        var newTicket = {
-            ticket: {
-                subject: 'Ссылки на скачивания отправлены на ' + email,
-                comment: {
-                    value: 'Запрос ссылки на скачивание'
-                },
-                requester: {
-                    email: email,
-                    name: name
-                },
-                tags: ['install_app']
-            }
-        };
-        $log.debug('get links', newTicket);
-        return Support.$$request('tickets', 'post', newTicket);
+    this.links = function (name, email) {
+        $log.debug('get links for download', name, email);
+
+        email = email || '';
+        name = name || '';
+
+        return request ('links', 'post', {
+            name: name,
+            email: email
+        })
     };
 });

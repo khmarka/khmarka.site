@@ -3,80 +3,46 @@ var zendeskClient = require ('./zendesk');
 var mailClient = require ('./mail');
 var async = require ('async');
 
+var apps = {
+    test: {
+        name: 'Test app',
+        description: 'Description of the app',
+        links: {
+            ios: 'http://google.ru',
+            android: 'http://maps.google.ru'
+        },
+        imageUrl: 'http://images.visitcanberra.com.au/images/canberra_hero_image.jpg'
+    }
+};
+function send (appName, email, name, cb) {
+    var app = apps[appName];
+    if (!app) {
+        return cb (new Error("Invalid application name"));
+    }
+    mailClient.sendTemplate('download-app', email, name, {
+        appname: app.name,
+        description: app.description,
+        linkios: app.links.ios,
+        linkandroid: app.links.android,
+        imageUrl: app.imageUrl
+    }, ['links'], function (result) {
+        cb(null, result);
+    });
+}
 function sendAllLinks (email, name, cb) {
 
     function sendMail (cb) {
-
-        var template_name = "download-links";
-        var template_content = [];
-        var message = {
-            "to": [{
-                "email": email,
-                "name": name,
-                "type": "to"
-            }],
-            "headers": {
-                "Reply-To": "support@khmarka.com.ua"
-            },
-            "important": false,
-            "track_opens": null,
-            "track_clicks": null,
-            "auto_text": null,
-            "auto_html": null,
-            "inline_css": null,
-            "url_strip_qs": null,
-            "preserve_recipients": null,
-            "view_content_link": null,
-            "tracking_domain": null,
-            "signing_domain": null,
-            "return_path_domain": null,
-            "merge": true,
-            "merge_language": "mailchimp",
-            "global_merge_vars": [{}],
-            "merge_vars": [],
-            "tags": [
-                "install-links"
-            ],
-            "metadata": {
-                "website": "www.khmarka.com.ua"
-            },
-            "recipient_metadata": [{
-                "rcpt": email
-            }]
-        };
-        var async = false;
-        var ip_pool = "Main Pool";
-        var send_at = null;
-
-        mailClient.messages.sendTemplate({"template_name": template_name, "template_content": template_content, "message": message, "async": async, "ip_pool": ip_pool, "send_at": send_at}, function (result) {
+        mailClient.sendTemplate('download-links', email, name, {}, ['links'], function (result) {
             cb(null, result);
-        }, function (err) {
-            cb(err);
         });
     }
-
-    function createTicket (cb) {
-        zendeskClient.tickets.create({
-            ticket: {
-                subject: "Все ссылки отправлены " + email,
-                comment: {
-                    value: "Ссылки отправлены"
-                },
-                requester: {
-                    name: name,
-                    email: email
-                },
-                tags: ['website', 'links']
-            }
-        }, function (err, request, result) {
-            cb (null, result);
-        });
+    function createLinksTicket (cb) {
+        zendeskClient.createTicket("Все ссылки отправлены "+email, "Ссылки отправлены", name, email, ['website', 'links'], cb);
     }
-
     async.series([
         sendMail,
-        createTicket
+        createLinksTicket
     ], cb);
 }
-
+module.exports.send = send;
 module.exports.sendAll = sendAllLinks;
