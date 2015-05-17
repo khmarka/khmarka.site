@@ -8,7 +8,9 @@ var app = angular.module('app', [
     // storage
     'ngCookies',
     // modal
-    'ngDialog'
+    'ngDialog',
+    // env config
+    'config'
 ]);
 
 
