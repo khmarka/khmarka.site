@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server/server.js",
-    "postinstall": "./node_modules/bower/bin/bower install && ./node_modules/gulp/bin/gulp build"
+    "postinstall": "bower install && gulp build"
   },
   "keywords": [
     "gulp",
