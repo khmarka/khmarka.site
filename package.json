@@ -6,7 +6,8 @@
   "scripts": {
     "build": "gulp build",
     "start": "node server/server.js",
-    "postinstall": "./node_modules/bower/bin/bower install"
+    "postinstall": "./node_modules/bower/bin/bower install",
+    "prepublish": "./node_modules/gulp/bin/gulp build"
   },
   "keywords": [
     "gulp",
