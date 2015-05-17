@@ -1,8 +1,8 @@
 'use strict';
 
-app.service('Feedback', function ($http, $log) {
+app.service('Feedback', function ($http, $log, ENV) {
 
-    var baseUrl = 'http://localhost:8080/api/';
+    var baseUrl = ENV.api;
     function request (url, method, data) {
         return $http({
             method: method,

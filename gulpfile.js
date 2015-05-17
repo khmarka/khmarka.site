@@ -14,8 +14,27 @@ var gulp         = require('gulp'),
     htmlmin      = require('gulp-htmlmin'),
     runSequence  = require('gulp-run-sequence'),
     path         = require('path'),
-    argv         = require('yargs').argv;
+    argv         = require('yargs').argv,
+    ngConstant = require('gulp-ng-constant'),
+    concat = require ('gulp-concat');
 
+
+gulp.task('config', function() {
+    gulp.src('./configs/dev.json')
+        .pipe(ngConstant({
+            name: 'config'
+        }))
+        .pipe(concat('config.js'))
+        .pipe(gulp.dest("./www/js/"))
+});
+gulp.task('config-prod', function() {
+    gulp.src('./configs/prod.json')
+        .pipe(ngConstant({
+            name: 'config'
+        }))
+        .pipe(concat('config.js'))
+        .pipe(gulp.dest("www/js/"))
+});
 
 //webserver
 gulp.task('browser-sync', function() {
@@ -128,8 +147,13 @@ gulp.task('watch', function() {
 });
 
 gulp.task('build',function (cb) {
-    var sequence = ['clean',['copy','copy-script', 'copy-static', 'copy-lang', 'copy-php','copy-images', 'jade', 'compass']];
-    if (argv.production) sequence.push('minify');
+    var sequence = ['clean',['copy', 'copy-script', 'copy-static', 'copy-lang', 'copy-php','copy-images', 'jade', 'compass']];
+    if (argv.production) {
+        sequence.push('minify');
+        sequence.push('config-prod');
+    } else {
+        sequence.push('config');
+    }
     sequence.push(cb);
     return runSequence.apply(this, sequence);
 });
