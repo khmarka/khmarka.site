@@ -4,7 +4,6 @@
   "description": "gulp-template by buschidos",
   "main": "index.js",
   "scripts": {
-    "build": "gulp build",
     "start": "node server/server.js",
     "postinstall": "./node_modules/bower/bin/bower install",
     "prepublish": "./node_modules/gulp/bin/gulp build"
