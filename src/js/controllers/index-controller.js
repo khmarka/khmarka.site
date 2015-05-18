@@ -120,7 +120,7 @@ app.controller('IndexController', function ($scope, $rootScope, $log, $translate
     $scope.projects = [
         {
             name: 'businessbank',
-            iconUrl: './img/apps/business-bank.png',
+            iconUrl: './img/icons/icon-businessbank.png',
             screenUrl: './img/apps/screens/business-bank.png',
             links: {
                 ios: "itms-services://?action=download-manifest&url=https://s1.khmarka.com.ua:9443/applicationcenter/service/link/plist/ffffffb83c10ffffffd9ffffff9bfffffffaffffff95ffffffae4cffffffb7ffffffca5b75055442",
@@ -130,7 +130,7 @@ app.controller('IndexController', function ($scope, $rootScope, $log, $translate
         },
         {
             name: 'personalbank',
-            iconUrl: './img/apps/personal-bank.png',
+            iconUrl: './img/icons/icon-personalbank.png',
             screenUrl: './img/apps/screens/personal-bank.png',
             links: {
                 ios: "itms-services://?action=download-manifest&url=https://s1.khmarka.com.ua:9443/applicationcenter/service/link/plist/1affffffae66ffffff91fffffff5ffffffb90278ffffffa3ffffffd0ffffff8affffff8bffffff844f19ffffffa4",
@@ -139,7 +139,7 @@ app.controller('IndexController', function ($scope, $rootScope, $log, $translate
         },
         {
             name: 'foodretail',
-            iconUrl: './img/apps/food-retail.png',
+            iconUrl: './img/icons/icon-foodretail.png',
             screenUrl: "./img/apps/screens/food-retail.png",
             links: {
                 "ios": "itms-services://?action=download-manifest&url=https://s1.khmarka.com.ua:9443/applicationcenter/service/link/plist/34ffffffdc48fffffff014ffffffda2effffffccffffffb51d4a1fffffffddffffffd8ffffffd7ffffffa2"
@@ -147,10 +147,8 @@ app.controller('IndexController', function ($scope, $rootScope, $log, $translate
         },
         {
             name: 'gazstations',
-            iconUrl: 'http://placehold.it/100x100',
-            links: {
-                "ios": "itms-services://?action=download-manifest&url=https://s1.khmarka.com.ua:9443/applicationcenter/service/link/plist/ffffffd40bffffff941cffffffe319ffffffc9fffffff2521dffffff8d13ffffff9fffffffa54353"
-            }
+            iconUrl: './img/icons/icon-gazstation.png',
+            links: null
         }
     ];
 
