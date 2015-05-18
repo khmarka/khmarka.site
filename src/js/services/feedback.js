@@ -26,6 +26,19 @@ app.service('Feedback', function ($http, $log, ENV) {
         });
     };
 
+    this.link = function (appName, name, email) {
+        $log.debug('get link for download', appName, name, email);
+
+        if (!appName) return $log.error("Undefined appname");
+        email = email || '';
+        name = name || '';
+
+        return request ('links/'+appName, 'post', {
+            name: name,
+            email: email
+        })
+    };
+
     this.links = function (name, email) {
         $log.debug('get links for download', name, email);
 

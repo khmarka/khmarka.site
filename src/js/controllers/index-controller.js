@@ -22,6 +22,7 @@ app.controller('IndexController', function ($scope, $rootScope, $log, $translate
     $scope.installModalForm = {
         name: null,
         email: null,
+        appName: null,
         submit: 'Отправить'
     };
     $scope.installModal = null;
@@ -33,7 +34,7 @@ app.controller('IndexController', function ($scope, $rootScope, $log, $translate
         }
         $scope.installModalForm.submit = "Отправка ...";
 
-        Feedback.links($scope.installModalForm.name, $scope.installModalForm.email).then(function () {
+        Feedback.link($scope.installModalForm.appName, $scope.installModalForm.name, $scope.installModalForm.email).then(function () {
             $scope.installModalForm.submit = 'Отправлено успешно!';
             $timeout(function () {
                 $scope.installModal.close();
@@ -47,13 +48,15 @@ app.controller('IndexController', function ($scope, $rootScope, $log, $translate
             $scope.installModalForm.email = null;
         })
     };
-    $scope.openEmailDialog = function () {
-        $log.debug("openEmailDialog clicked");
+    $scope.openEmailDialog = function (project) {
+        $log.debug("openEmailDialog clicked", project.name);
         $scope.installModal = ngDialog.open({
             template: 'views/popups/email.html',
             scope: $scope,
             showClose: true
         });
+        $scope.installModalForm.appName = project.name;
+
         $scope.installModal.closePromise.then(function () {
             $log.debug("openEmailDialog resolved");
         });
@@ -116,7 +119,7 @@ app.controller('IndexController', function ($scope, $rootScope, $log, $translate
     }
     $scope.projects = [
         {
-            name: 'business-bank',
+            name: 'businessbank',
             iconUrl: './img/apps/business-bank.png',
             screenUrl: './img/apps/screens/business-bank.png',
             links: {
@@ -126,7 +129,7 @@ app.controller('IndexController', function ($scope, $rootScope, $log, $translate
             isActive: true
         },
         {
-            name: 'personal-bank',
+            name: 'personalbank',
             iconUrl: './img/apps/personal-bank.png',
             screenUrl: './img/apps/screens/personal-bank.png',
             links: {
@@ -135,7 +138,7 @@ app.controller('IndexController', function ($scope, $rootScope, $log, $translate
             }
         },
         {
-            name: 'food-retail',
+            name: 'foodretail',
             iconUrl: './img/apps/food-retail.png',
             screenUrl: "./img/apps/screens/food-retail.png",
             links: {
@@ -143,7 +146,7 @@ app.controller('IndexController', function ($scope, $rootScope, $log, $translate
             }
         },
         {
-            name: 'gaz-stations',
+            name: 'gazstations',
             iconUrl: 'http://placehold.it/100x100',
             links: {
                 "ios": "itms-services://?action=download-manifest&url=https://s1.khmarka.com.ua:9443/applicationcenter/service/link/plist/ffffffd40bffffff941cffffffe319ffffffc9fffffff2521dffffff8d13ffffff9fffffffa54353"
