@@ -17,17 +17,6 @@ html(ng-app="app")
         meta(name="format-detection" content="telephone=no")
         link(rel="stylesheet" media="all" href="css/screen.css")
     body(ng-controller="AppController")
-        .remodal-bg
-            .remodal(data-remodal-id='modal')
-                h1.title Установка приложение
-                p
-                    | Для того, чтобы установить приложение, оставьте свой email. Мы отправим ссылку вам на почту.
-                form.form#installForm(action="main-install.php", method="post")
-                    input.input(type="email", required, placeholder="Email")
-                    br
-                    .buttons.buttons_2
-                        a.button.button_clear.remodal-cancel(href='#') Cancel
-                        a.button.button_blue.remodal-confirm(href='#', id="installApp_submit") OK
 
         div(ui-view)
         script(src="bower/jquery/dist/jquery.min.js")
