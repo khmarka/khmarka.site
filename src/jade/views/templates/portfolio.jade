@@ -1,6 +1,6 @@
 .portfolio
     .portfolio__item(ng-repeat="project in projects", ng-class="{'is-active': project.isActive == true}")
-        .portfolio__preview
+        .portfolio__preview(ng-if="project.screenUrl")
             .phone
                 .phone__inner
                     img(ng-src="{{project.screenUrl}}", alt="")
