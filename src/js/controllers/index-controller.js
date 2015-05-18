@@ -49,7 +49,7 @@ app.controller('IndexController', function ($scope, $rootScope, $log, $translate
         })
     };
     $scope.openEmailDialog = function (project) {
-        $log.debug("openEmailDialog clicked", project.name);
+        $log.debug("openEmailDialog clicked", project);
         $scope.installModal = ngDialog.open({
             template: 'views/popups/email.html',
             scope: $scope,
