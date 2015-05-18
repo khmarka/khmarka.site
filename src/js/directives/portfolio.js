@@ -5,9 +5,15 @@ app.directive('portfolio', function () {
         restrict: 'E',
         scope: {
             projects: '=portfolioSrc',
-            onInstallClick: '&onInstallClick'
+            onInstallClick: '&'
         },
         replace: true,
-        templateUrl: 'views/templates/portfolio.html'
+        templateUrl: 'views/templates/portfolio.html',
+        controller: function ($scope) {
+
+            console.log($scope.onInstallClick());
+            //$scope.installClick = function (project) {
+            //}
+        }
     }
 });

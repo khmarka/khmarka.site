@@ -11,9 +11,9 @@
             h3 {{project.title}}
             div(ng-bind-html="project.description | html")
             .portfolio__item__actions
-                //a(ng-click="onInstallClick(project)")
-                //    i.icon.icon-phone
-                //    span(translate="install-app")
+                a(ng-click="onInstallClick()(project)")
+                    i.icon.icon-phone
+                    span(translate="install-app")
                 a(scroll-to="#section-contacts")
                     i.icon.icon-telephone
                     span(translate="contact-us")
