@@ -17,28 +17,28 @@ var apps = {
         name: "Business Bank",
         description: "Мобильное приложение предназначено для руководителей и собственников малого и среднего бизнеса.",
         links: {
-            ios: "itms-services://?action=download-manifest&url=https://s1.khmarka.com.ua:9443/applicationcenter/service/link/plist/ffffffb83c10ffffffd9ffffff9bfffffffaffffff95ffffffae4cffffffb7ffffffca5b75055442"
+            ios: "itms-services://?action=download-manifest&url=https://s1.khmarka.com.ua:9443/applicationcenter/service/link/plist/63fffffff3ffffff92ffffffc52a3769ffffffe27e03ffffffaa5c5130ffffffc5ffffffc9"
         }
     },
     personalbank: {
         name: "Personal Bank",
         description: "Наше мобильное приложение позволит Вашему клиенту выполнять банковские операции без необходимости посещать отделение банка.",
         links: {
-            ios: "itms-services://?action=download-manifest&url=https://s1.khmarka.com.ua:9443/applicationcenter/service/link/plist/1affffffae66ffffff91fffffff5ffffffb90278ffffffa3ffffffd0ffffff8affffff8bffffff844f19ffffffa4"
+            ios: "itms-services://?action=download-manifest&url=https://s1.khmarka.com.ua:9443/applicationcenter/service/link/plist/ffffff8f7b6d0e47ffffffcdfffffff565ffffff8f217c4469ffffffb2ffffffa0ffffffb9"
         }
     },
     foodretail: {
         name: "Food Retail",
         description: "Наше приложение реализует личный кабинет покупателя-клиента торговой сети. Благодаря нашему приложению, бонусная карточка всегда находится с покупателем – в его смартфоне.",
         links: {
-            ios: "itms-services://?action=download-manifest&url=https://s1.khmarka.com.ua:9443/applicationcenter/service/link/plist/34ffffffdc48fffffff014ffffffda2effffffccffffffb51d4a1fffffffddffffffd8ffffffd7ffffffa2"
+            ios: "itms-services://?action=download-manifest&url=https://s1.khmarka.com.ua:9443/applicationcenter/service/link/plist/ffffff86ffffffbaffffff9637fffffff5ffffffa6ffffffd1ffffffe97565ffffff88050a7effffffd37a"
         }
     },
     gazstations: {
         name: "Gaz stations",
         description: "Наше приложение реализует личный кабинет участника Вашей бонусной программы. Благодаря нашему приложению, бонусная карточка Вашей сети всегда находится с Вашим клиентом – в его смартфоне.",
         links: {
-            ios: "itms-services://?action=download-manifest&url=https://s1.khmarka.com.ua:9443/applicationcenter/service/link/plist/ffffffd40bffffff941cffffffe319ffffffc9fffffff2521dffffff8d13ffffff9fffffffa54353"
+            //ios: "itms-services://?action=download-manifest&url=https://s1.khmarka.com.ua:9443/applicationcenter/service/link/plist/ffffffd40bffffff941cffffffe319ffffffc9fffffff2521dffffff8d13ffffff9fffffffa54353"
         }
     }
 };
