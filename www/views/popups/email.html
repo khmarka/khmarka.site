@@ -1,14 +1,14 @@
 
-<h1 class="title">Установка приложение</h1>
-<p>Для того, чтобы установить приложение, оставьте свой email. Мы отправим ссылку вам на почту.</p>
+<h1 translate="email-install-title" class="title"></h1>
+<p translate="email-install-caption"></p>
 <form ng-submit="submitInstallForm(form)" name="form" class="form">
   <label>
-    <input name="name" type="text" required="required" ng-model="installModalForm.name" placeholder="Ваше имя" class="input"/>
+    <input name="name" type="text" required="required" ng-model="installModalForm.name" placeholder="{{'your-name' | translate}}" class="input"/>
   </label>
   <label>
-    <input name="email" type="email" required="required" ng-model="installModalForm.email" placeholder="Введите email" class="input"/>
+    <input name="email" type="email" required="required" ng-model="installModalForm.email" placeholder="{{'your-email' | translate}}" class="input"/>
   </label>
   <div class="buttons">
-    <button type="submit" class="button button_blue">{{installModalForm.submit}}</button>
+    <button type="submit" class="button button_blue">{{installModalForm.submit | translate}}</button>
   </div>
 </form>
