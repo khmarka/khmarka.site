@@ -43,18 +43,15 @@
                 h2(translate="contacts")
                 .contacts
                     p
-                        i.icon.icon-home
-                        | {{'contact-address' | translate}}
-                    p
                         i.icon.icon-phone
-                        | {{'contact-phonenumber' | translate }}
+                        | {{'contact-us-phone' | translate}}
+                        br
+                        | <a href="tel:+380967411549">+380 96 741 1549</a>
                     p
                         i.icon.icon-mail
-                        | {{'parthnership' | translate}}:&nbsp;
-                        a(href="mailto:join@khmarka.com.ua") join@kmarka.com.ua
+                        | {{'and-email' | translate}}
                         br
-                        | {{'vacancies' | translate}}:&nbsp;
-                        a(href="mailto:jobs@khmarka.com.ua") jobs@kmarka.com.ua
+                        a(href="mailto:info@khmarka.com.ua") info@kmarka.com.ua
 
                 .feedback
                     form.form(id="feedbackForm", ng-submit="submitFeedback(form)", name="form")

@@ -1,10 +1,9 @@
-h1.title Установка приложение
-p
-    | Для того, чтобы установить приложение, оставьте свой email. Мы отправим ссылку вам на почту.
+h1.title(translate="email-install-title")
+p(translate="email-install-caption")
 form.form(ng-submit="submitInstallForm(form)", name="form")
     label
-        input.input(name="name",type="text", required, ng-model="installModalForm.name", placeholder="Ваше имя")
+        input.input(name="name",type="text", required, ng-model="installModalForm.name", placeholder="{{'your-name' | translate}}")
     label
-        input.input(name="email",type="email", required, ng-model="installModalForm.email", placeholder="Введите email")
+        input.input(name="email",type="email", required, ng-model="installModalForm.email", placeholder="{{'your-email' | translate}}")
     div.buttons
-        button.button.button_blue(type="submit") {{installModalForm.submit}}
+        button.button.button_blue(type="submit") {{installModalForm.submit | translate}}

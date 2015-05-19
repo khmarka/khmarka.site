@@ -23,7 +23,7 @@ app.controller('IndexController', function ($scope, $rootScope, $log, $translate
         name: null,
         email: null,
         appName: null,
-        submit: 'Отправить'
+        submit: 'send'
     };
     $scope.installModal = null;
 
@@ -32,18 +32,18 @@ app.controller('IndexController', function ($scope, $rootScope, $log, $translate
             $log.debug('invalid install app form');
             return;
         }
-        $scope.installModalForm.submit = "Отправка ...";
+        $scope.installModalForm.submit = "send-process";
 
         Feedback.link($scope.installModalForm.appName, $scope.installModalForm.name, $scope.installModalForm.email).then(function () {
-            $scope.installModalForm.submit = 'Отправлено успешно!';
+            $scope.installModalForm.submit = 'send-success';
             $timeout(function () {
                 $scope.installModal.close();
             }, 1000);
         }, function () {
-            $scope.installModalForm.submit = "Ошибка отправки. Попробуйте снова!";
+            $scope.installModalForm.submit = "send-error";
         }).finally(function () {
             $timeout(function () {
-                $scope.installModalForm.submit = 'Отправить';
+                $scope.installModalForm.submit = 'send';
             }, 2000);
             $scope.installModalForm.email = null;
         })
