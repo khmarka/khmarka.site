@@ -13,6 +13,8 @@
                         li
                             a(scroll-to="#section-portfolio", translate="projects")
                         li
+                            a(scroll-to="#section-advantages", translate="advantages")
+                        li
                             button(scroll-to="#section-contacts", translate="contact-us")
                 .nav__toggle
                     i.icon.icon-menu
@@ -39,7 +41,7 @@
                 h2(translate="our-projects")
                 projects.projects_dark#projects-portfolio(projects-src="projects")
                 portfolio.portfolio_index(portfolio-src="projects", on-install-click="openEmailDialog")
-            section.section.section_advantages
+            section.section.section_advantages#section-advantages
                 hr.divider
                 h2(translate="our-advantages")
                 ul.list.list_advantages
@@ -56,7 +58,7 @@
                             h3 3. {{'flexibly' | translate}}
                             p(translate="flexibly-desc")
                 hr.divider
-            section.section.section_contacts(id="section-contacts")
+            section.section.section_contacts#section-contacts
                 h2(translate="contacts")
                 .contacts
                     p
