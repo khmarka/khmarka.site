@@ -1,0 +1,21 @@
+.list
+	&.list_horizontal
+		li
+			display: inline-block
+			margin: 0
+			padding: 0
+			vertical-align: top
+	&.list_advantages
+		//margin-top: 20px
+		max-width: 600px
+		margin: 20px auto 0
+		.list__item
+			padding: 20px
+		li
+			font-size: 16px
+			text-align: center
+			+r($phone-break)
+				font-size: 14px
+				.list__item
+					padding: 20px 5px
+

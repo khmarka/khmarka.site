@@ -38,7 +38,24 @@
                 hr.divider
                 h2(translate="our-projects")
                 projects.projects_dark#projects-portfolio(projects-src="projects")
-                portfolio(portfolio-src="projects", on-install-click="openEmailDialog")
+                portfolio.portfolio_index(portfolio-src="projects", on-install-click="openEmailDialog")
+            section.section.section_advantages
+                hr.divider
+                h2(translate="our-advantages")
+                ul.list.list_advantages
+                    li
+                        .list__item
+                            h3 1. {{'profitably' | translate}}
+                            p(translate="profitably-desc")
+                    li
+                        .list__item
+                            h3 2. {{'fast' | translate}}
+                            p(translate="fast-desc")
+                    li
+                        .list__item
+                            h3 3. {{'flexibly' | translate}}
+                            p(translate="flexibly-desc")
+                hr.divider
             section.section.section_contacts(id="section-contacts")
                 h2(translate="contacts")
                 .contacts
