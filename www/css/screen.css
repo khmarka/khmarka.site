@@ -287,7 +287,8 @@ body.ngdialog-open { overflow: hidden; }
 .ngdialog.ngdialog-theme-default .ngdialog-input .ngdialog-button.ngdialog-button-secondary { background: #e0e0e0; color: #777; }
 
 .list.list_horizontal li { display: inline-block; margin: 0; padding: 0; vertical-align: top; }
-.list.list_advantages { max-width: 600px; margin: 20px auto 0; }
+.list.list_advantages { max-width: 600px; margin: 20px auto 0; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; }
+@media only screen and (max-width: 720px) { .list.list_advantages { display: block; } }
 .list.list_advantages .list__item { padding: 20px; }
 .list.list_advantages li { font-size: 16px; text-align: center; }
 @media only screen and (max-width: 640px) { .list.list_advantages li { font-size: 14px; }
